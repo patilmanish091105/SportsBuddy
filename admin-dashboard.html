@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard - Manage Sports Buddy Platform">
+    <title>Admin Dashboard - Sports Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-brand">
+    <a href="index.html" class="brand-link">
+        <h1>⚽ Sports Buddy</h1>
+    </a>
+</div>
+
+            <div class="nav-links">
+                <span id="adminEmail" style="font-weight: 500; color: var(--text-color);"></span>
+                <button id="logoutBtn" class="btn btn-secondary btn-small" aria-label="Logout">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar" role="navigation" aria-label="Admin sections">
+            <ul>
+                <li>
+                    <a href="#" data-section="sports" class="active" aria-current="page">
+                         Sports
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="cities">
+                         Cities
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="areas">
+                     Areas
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="events">
+                         Events
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div id="loadingIndicator" class="spinner" style="display: none;"></div>
+
+            <div id="alertContainer"></div>
+
+            <section id="sports" class="content-section active">
+                <h2>Manage Sports</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Add and manage sports categories available on the platform
+                </p>
+
+                <form id="sportForm" class="admin-form">
+                    <input 
+                        id="sportName" 
+                        placeholder="Sport name (e.g., Football)" 
+                        required 
+                        aria-label="Sport name"
+                    />
+                    <input 
+                        id="sportDesc" 
+                        placeholder="Description (optional)" 
+                        aria-label="Sport description"
+                    />
+                    <button class="btn btn-primary" type="submit">Add Sport</button>
+                </form>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sport Name</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sportsTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="cities" class="content-section">
+                <h2>Manage Cities</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Add and manage cities where events can be organized
+                </p>
+
+                <form id="cityForm" class="admin-form">
+                    <input 
+                        id="cityName" 
+                        placeholder="City name (e.g., New York)" 
+                        required 
+                        aria-label="City name"
+                    />
+                    <button class="btn btn-primary" type="submit">Add City</button>
+                </form>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>City Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="citiesTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="areas" class="content-section">
+                <h2>Manage Areas</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Add and manage areas within cities
+                </p>
+
+                <form id="areaForm" class="admin-form">
+                    <input 
+                        id="areaName" 
+                        placeholder="Area name (e.g., Downtown)" 
+                        required 
+                        aria-label="Area name"
+                    />
+                    <select id="areaCity" required aria-label="Select city">
+                        <option value="">Select a city</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Add Area</button>
+                </form>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Area Name</th>
+                                <th>City</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="areasTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="events" class="content-section">
+                <h2>Manage Events</h2>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Create and manage sports events
+                </p>
+
+                <form id="eventForm" class="admin-form">
+                    <input 
+                        id="eventName" 
+                        placeholder="Event name" 
+                        required 
+                        aria-label="Event name"
+                    />
+                    <select id="eventSport" required aria-label="Select sport">
+                        <option value="">Select a sport</option>
+                    </select>
+                    <select id="eventCity" required aria-label="Select city">
+                        <option value="">Select a city</option>
+                    </select>
+                    <select id="eventArea" required aria-label="Select area">
+                        <option value="">Select an area</option>
+                    </select>
+                    <input 
+                        type="date" 
+                        id="eventDate" 
+                        required 
+                        aria-label="Event date"
+                    />
+                    <input 
+                        type="time" 
+                        id="eventTime" 
+                        required 
+                        aria-label="Event time"
+                    />
+                    <textarea 
+                        id="eventDescription" 
+                        placeholder="Event description (optional)" 
+                        rows="3"
+                        aria-label="Event description"
+                    ></textarea>
+                    <button class="btn btn-primary" type="submit">Add Event</button>
+                </form>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Sport</th>
+                                <th>Location</th>
+                                <th>Date & Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventsTable">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sports Buddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>

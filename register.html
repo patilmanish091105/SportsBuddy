@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for Sports Buddy - Join millions of sports enthusiasts">
+    <title>Register - Sports Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-brand">
+    <a href="index.html" class="brand-link">
+        <h1>⚽ Sports Buddy</h1>
+    </a>
+</div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Create Your Account</h2>
+            <p style="text-align: center; color: #ffffff; margin-bottom: 2rem;">
+                Join millions of sports enthusiasts
+            </p>
+
+            <div id="loadingIndicator" class="spinner" style="display: none;"></div>
+
+            <div id="alertContainer"></div>
+
+            <form id="registerForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        placeholder="John Doe"
+                        required 
+                        aria-required="true"
+                        minlength="2"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="your.email@example.com"
+                        required 
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="Min 6 characters"
+                        minlength="6" 
+                        required 
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password *</label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        placeholder="Re-enter your password"
+                        required 
+                        aria-required="true"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <select id="city" required aria-required="true">
+                        <option value="">Select your city</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="area">Area *</label>
+                    <select id="area" required aria-required="true" disabled>
+                        <option value="">First select a city</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; gap: 8px; align-items: center;">
+                        <input 
+                            type="checkbox" 
+                            id="terms" 
+                            required 
+                            aria-required="true"
+                        >
+                        <span>I agree to Terms & Conditions *</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Create Account
+                </button>
+
+                <p class="auth-link">
+                    Already have an account? 
+                    <a href="login.html">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sports Buddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/logger.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>

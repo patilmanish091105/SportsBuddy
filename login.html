@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to Sports Buddy - Access your sports network">
+    <title>Login - Sports Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-brand">
+    <a href="index.html" class="brand-link">
+        <h1>⚽ Sports Buddy</h1>
+    </a>
+</div>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="register.html">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Welcome Back</h2>
+            <p style="text-align: center; color: #ffffff; margin-bottom: 2rem;">
+                Login to continue your sports journey
+            </p>
+
+            <div id="loadingIndicator" class="spinner" style="display: none;"></div>
+
+            <div id="alertContainer"></div>
+            
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="your.email@example.com" 
+                        required
+                        aria-required="true"
+                        autocomplete="email"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="Enter your password" 
+                        required
+                        aria-required="true"
+                        autocomplete="current-password"
+                    >
+                </div>
+                
+                <div class="form-group" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-weight: normal; margin: 0;">
+                        <input type="checkbox" id="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="forgot-password.html" style="color: #ffffff; text-decoration: none; font-size: 0.9rem;">
+                        Forgot Password?
+                    </a>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    Login
+                </button>
+                
+                <p class="auth-link">
+                    Don't have an account? 
+                    <a href="register.html">Register here</a>
+                </p>
+                
+                <div class="admin-link">
+                    <a href="admin.html">🔐 Login as Admin</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sports Buddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/logger.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
